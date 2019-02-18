@@ -1,40 +1,12 @@
 import React from 'react';
+import Table from './ReactTable'
 
 class App extends React.Component {
-  state = {
-    employees: []
-  }
-  
-  componentWillMount = () => {
-    fetch('http://localhost:8080/api/employees')
-      .then(response => response.json())
-      .then(employees => this.setState({ employees }))
-  }
-
-  render() {
-    const {
-      employees
-    } = this.state;
-
-    console.log(this.state);
-
+   
+  render(){
     return (
       <div className="App">
-        <h1>Plexxis Employees</h1>
-        {
-          employees.map(employee => (
-            <div key={employee.id}>
-              {
-                Object.keys(employee).map(key => 
-                  <span key={key}>
-                    { key }:
-                    { employee[key] } 
-                  </span>
-                )
-              }
-            </div>
-          ))
-        }
+        <Table />
       </div>
     );
   }
