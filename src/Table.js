@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { addEmployee } from './actions'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { deleteEmployee } from './actions/index'
+
 
 class Table extends Component{
-  
-    componentWillMount(){
-        fetch('http://localhost:8080/api/employees')
-      .then(response => response.json())
-      .then(employees => this.props.addEmployee(employees))
+
+    renderButton(data) {
+        console.log(this.props.deleteEmployee)
+        return(
+            <button onClick={() => this.props.deleteEmployee(data.id)}>Delete</button>
+        )
     }
-    
+
     render(){
+        const MyLink = <Link style={styles.link} to="/new">Create new Entry</Link>
         const data = this.props.employees
-        
+        console.log(data)
           const columns = [{
-                  Header: 'Name',
-                  accessor: 'name'
+            Header: 'ID',
+            accessor: 'id'
+            }, {
+                Header: 'Name',
+                accessor: 'name'
               }, {
                 Header: 'Code',
                 accessor: 'code'
@@ -34,11 +42,16 @@ class Table extends Component{
             }, {
                 Header: 'Branch',
                 accessor: 'branch'
+            }, {
+                id: "23",
+                Header: 'Delete',
+                accessor: this.renderButton.bind(this)
             }]
         
           return (
           <div>
             <h1>Plexxis Employees</h1>
+            <div><Button variant="outlined">{MyLink}</Button></div>
             <ReactTable
             data={data}
             columns={columns}
@@ -48,8 +61,15 @@ class Table extends Component{
 }
 }
 
+const styles = {
+    link: {
+        textDecoration: 'none',
+        color: 'black'
+    }
+}
+
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ addEmployee: addEmployee }, dispatch)
+    return bindActionCreators({ deleteEmployee: deleteEmployee }, dispatch)
 }
 
 function mapStateToProps(state){

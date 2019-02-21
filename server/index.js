@@ -15,4 +15,12 @@ app.get('/api/employees', cors(corsOptions), (req, res, next) => {
   res.send(JSON.stringify(employees, null, 2));
 })
 
+app.post('/api/employees', cors(corsOptions), (req, res, next) => {
+
+})
+
+app.delete('/api/employees/:id', cors(corsOptions), (req, res, next) => {
+
+})
+
 app.listen(8080, () => console.log('Job Dispatch API running on port 8080!'))

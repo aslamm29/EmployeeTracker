@@ -36,3 +36,5 @@ Step 1 : Use the react table library to display the content on the website
 Step 2: Integrated react table library into to capture the details from the api
 Step 3: Plugged in redux to store the data and accessing the details with ease of access to add/delete entries of data in the next steps
 Step 4: Installed the redux form library to enable creating and deleting employees in the next steps
+Step 5: Installed the react router library to handle navigation betwwen pages on click of a button
+Step 6: Using material UI components to create a button to navigate to a form for creating new employee details
