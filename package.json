@@ -5,11 +5,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "axios": "^0.18.0",
     "concurrently": "^3.6.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "lodash": "^4.17.11",
     "nodemon": "^1.17.5",
+    "pg": "^7.8.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^6.0.0",
@@ -27,5 +29,25 @@
     "eject": "react-scripts eject",
     "custom:build": "nodemon src/scripts/build.js --watch src/data --ext .md",
     "custom:start": "concurrently --kill-others \"npm run custom:build\" \"npm run start\""
-  }
+  },
+  "postgres": {
+    "name": "node-api-postgres",
+    "version": "1.0.0",
+    "description": "RESTful API with Node.js, Express, and PostgreSQL",
+    "main": "index.js",
+    "license": "MIT"
+  },
+  "description": "Create a simple but __impressive__ (looks good, works well, has intuitive design, etc.) CRUD application that can do the following:",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aslamm29/Plexxis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/aslamm29/Plexxis/issues"
+  },
+  "homepage": "https://github.com/aslamm29/Plexxis#readme"
 }

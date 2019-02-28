@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
-import { newEmployee } from './actions/index'
+import axios from 'axios'
 
 
-class ReactTableForm extends Component{
+class NewEmployeeForm extends Component{
     
     renderField(field){
         return(
@@ -25,8 +23,11 @@ class ReactTableForm extends Component{
     }
 
     onSubmit(values){
-        this.props.newEmployee(values)
-        this.props.history.push('/')
+
+    axios.post('http://localhost:8080/employees', values)
+    .then(() => {
+    this.props.history.push('/');
+    });
     }
 
     render(){
@@ -35,11 +36,6 @@ class ReactTableForm extends Component{
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <div>
                     <h1>Employee Details</h1>
-                    <Field 
-                    label="Id"
-                    name="id"
-                    component={this.renderField}
-                    />
                     <Field 
                     label="Name"
                     name="name"
@@ -104,6 +100,9 @@ function validate(values){
     if(!values.branch){
         errors.branch = "Enter a branch"
     }
+    if(!values.assigned){
+        errors.assigned = "Assign True or False"
+    }
     return errors   
 }
 
@@ -122,8 +121,5 @@ const styles = {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({ newEmployee: newEmployee}, dispatch)
-}
 
-export default reduxForm({ validate, form: 'newEmployeeForm'})(connect(null, mapDispatchToProps)(ReactTableForm))
+export default reduxForm({ validate, form: 'newEmployeeForm'})(NewEmployeeForm)
