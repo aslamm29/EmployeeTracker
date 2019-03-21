@@ -11,7 +11,7 @@ CRUD application that can do the following:
 1) Used a relational database to store the data (SQLite, MariaDB, Postgres) - Completed(Postgres)
 2) UI mechanisms to edit/update employee data - Completed
 3) Add API endpoint to update employee data   - Completed
-4) Use [React Table](https://react-table.js.org) - Completed
+4) Uses [React Table](https://react-table.js.org) - Completed
 
 ## Getting Started
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). The front-end app runs off localhost:3000. The REST API is located in the /server folder and runs off localhost:8080. Run `npm start` to start both servers.
